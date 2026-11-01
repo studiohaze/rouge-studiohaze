@@ -1,0 +1,50 @@
+<span class="kn">import</span> <span class="n">std</span><span class="p">.</span><span class="n">io</span> <span class="kn">as</span> <span class="n">io</span>
+
+<span class="kn">export</span> <span class="kd">type</span> <span class="n">Count</span> <span class="o">=</span> <span class="kt">int</span>
+<span class="kd">const</span> <span class="n">LIMIT</span><span class="p">:</span> <span class="n">Count</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="kd">record</span> <span class="n">Item</span> <span class="kd">derives</span> <span class="kt">Eq</span> <span class="p">{</span> <span class="n">value</span><span class="p">:</span> <span class="kt">int</span> <span class="p">}</span>
+<span class="kd">enum</span> <span class="n">State</span> <span class="p">{</span> <span class="n">Ready</span><span class="p">,</span> <span class="n">Done</span> <span class="p">}</span>
+<span class="kd">newtype</span> <span class="n">ItemId</span> <span class="o">=</span> <span class="kt">int</span>
+<span class="kd">protocol</span> <span class="n">Value</span> <span class="p">{</span> <span class="kd">function</span> <span class="n">value</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">Self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="p">}</span>
+<span class="kd">impl</span> <span class="n">Value</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="n">value</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">Item</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="p">{</span> <span class="n">item</span><span class="p">.</span><span class="n">value</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="n">f</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="kt">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="p">{</span> <span class="k">return</span> <span class="n">value</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="kd">let</span> <span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="kd">let</span> <span class="n">mapped</span> <span class="o">=</span> <span class="n">xs</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="kd">let</span> <span class="n">map</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="kd">let</span> <span class="n">set</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="kd">let</span> <span class="n">maps</span> <span class="o">=</span> <span class="k">map</span> <span class="p">{</span> <span class="s2">"answer"</span><span class="p">:</span> <span class="mi">42</span> <span class="p">}</span>
+<span class="kd">let</span> <span class="n">sets</span> <span class="o">=</span> <span class="k">set</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">}</span>
+<span class="kd">let</span> <span class="n">spacedMap</span> <span class="o">=</span> <span class="k">map</span>    <span class="p">{</span> <span class="s2">"answer"</span><span class="p">:</span> <span class="mi">42</span> <span class="p">}</span>
+<span class="kd">let</span> <span class="n">spacedSet</span> <span class="o">=</span> <span class="k">set</span>    <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">}</span>
+<span class="kd">let</span> <span class="n">interpolated</span> <span class="o">=</span> <span class="s2">"</span><span class="si">{</span><span class="k">map</span> <span class="p">{</span> <span class="s2">"answer"</span><span class="p">:</span> <span class="mi">42</span> <span class="si">}}</span><span class="s2">:</span><span class="si">{</span><span class="k">set</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="si">}}</span><span class="s2">:</span><span class="si">{</span><span class="n">xs</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+<span class="kd">let</span> <span class="n">mapValue</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="kd">let</span> <span class="n">setValue</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="kd">let</span> <span class="n">map상태</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="kd">let</span> <span class="n">set💎</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="kd">let</span> <span class="n">truth</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="kd">let</span> <span class="n">untruth</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="kd">let</span> <span class="n">absent</span> <span class="o">=</span> <span class="kc">null</span>
+<span class="kd">let</span> <span class="kd">mut</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..</span><span class="n">LIMIT</span> <span class="k">by</span> <span class="mi">2</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span> <span class="k">continue</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">index</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">while</span> <span class="n">total</span> <span class="o">&lt;</span> <span class="n">LIMIT</span> <span class="p">{</span> <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="k">loop</span> <span class="p">{</span> <span class="k">break</span> <span class="p">}</span>
+<span class="kd">let</span> <span class="n">state</span> <span class="o">=</span> <span class="k">match</span> <span class="n">State</span><span class="p">.</span><span class="n">Ready</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Ready</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+    <span class="k">case</span> <span class="n">Done</span> <span class="o">=&gt;</span> <span class="mi">0</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="n">cleanup</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">defer</span> <span class="p">{</span> <span class="n">io</span><span class="p">.</span><span class="n">writeLine</span><span class="p">(</span><span class="s2">"done"</span><span class="p">)</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="n">state</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="n">parallel</span> <span class="o">=</span> <span class="k">concurrent</span> <span class="p">{</span>
+    <span class="n">first</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">second</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="n">readFile</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="kt">string</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">using</span> <span class="n">file</span> <span class="o">=</span> <span class="n">io</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">?</span> <span class="p">{</span> <span class="k">return</span> <span class="n">file</span><span class="p">.</span><span class="n">read</span><span class="p">()</span> <span class="p">}</span>
+<span class="p">}</span>

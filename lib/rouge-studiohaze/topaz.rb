@@ -20,6 +20,7 @@ module RougeStudioHaze
       rule /0[bB][01](?:_?[01])*/u, Num::Bin
       rule /\d(?:_?\d)*\.\d(?:_?\d)*/u, Num::Float
       rule /\d(?:_?\d)*/u, Num::Integer
+      rule /(?<!\.)(?:map|set)(?=[ \t]*\{)/u, Keyword
       rule /(import|export|as)(?![\p{Letter}\p{Number}_\p{So}])/u, Keyword::Namespace
       rule /(let|mut|const|type|function|record|enum|newtype|protocol|impl|derives)(?![\p{Letter}\p{Number}_\p{So}])/u, Keyword::Declaration
       rule /(return|if|else|match|case|for|in|by|while|loop|break|continue|defer|using|concurrent)(?![\p{Letter}\p{Number}_\p{So}])/u, Keyword

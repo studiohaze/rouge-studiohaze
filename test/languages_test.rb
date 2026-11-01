@@ -21,6 +21,25 @@ class LanguagesTest < Minitest::Test
     assert_equal RougeStudioHaze::Topaz, Rouge::Lexer.guess(filename: 'sample.tpz')
   end
 
+  def test_topaz_521_keywords_collection_heads_and_markup
+    source = File.read(File.join(__dir__, 'fixtures/keywords-521.tpz'), encoding: 'UTF-8')
+    result = tokens(RougeStudioHaze::Topaz.new, source)
+    words = %w[let mut const type function return if else match case for in by while
+               break continue defer concurrent true false null import export as record
+               enum newtype protocol impl derives loop using]
+    words.each do |word|
+      assert result.any? { |kind, value| kind.qualname.start_with?('Keyword') && value == word }, word
+    end
+    %w[map set].each do |word|
+      assert_equal 3, result.count { |kind, value| kind.qualname == 'Keyword' && value == word }
+    end
+    assert_equal 3, result.count { |kind, value| kind.qualname == 'Name' && value == 'map' }
+    assert_token result, 'set', 'Name'
+    %w[mapValue setValue map상태 set💎].each { |name| assert_token result, name, 'Name' }
+    html = Rouge::Formatters::HTML.new.format(result)
+    assert_equal File.read(File.join(__dir__, 'fixtures/keywords-521.expect.html'), encoding: 'UTF-8'), html
+  end
+
   def test_lispex_lookup
     assert_equal RougeStudioHaze::Lispex, Rouge::Lexer.find('lispex')
     assert_equal RougeStudioHaze::Lispex, Rouge::Lexer.guess(filename: 'sample.lspx')
